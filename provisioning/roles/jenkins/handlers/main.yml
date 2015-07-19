@@ -1,0 +1,6 @@
+---
+  # Handler to handle jenkins tier notifications
+
+- name: restart jenkins
+  sudo: yes
+  service: name=jenkins state=restarted

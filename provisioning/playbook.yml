@@ -1,0 +1,10 @@
+---
+- hosts: all
+  sudo: yes
+  roles:
+    - common
+
+- hosts: jenkins
+  sudo: yes
+  roles:
+    - jenkins

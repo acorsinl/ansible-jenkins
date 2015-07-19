@@ -1,0 +1,21 @@
+---
+
+- name: add jenkins' apt key to keyring
+  apt_key: url={{jenkins_apt_key}} state=present
+
+- name: add jenkins source list
+  template:
+    src=etc/apt/sources.list.d/jenkins.list.j2
+    dest=/etc/apt/sources.list.d/jenkins.list
+
+- name: install jenkins
+  apt: name=jenkins update_cache=yes state=present
+
+- name: deploy jenkins default config
+  template:
+    src=etc/default/jenkins.j2
+    dest=/etc/default/jenkins
+  notify:
+    - restart jenkins
+
+- include: plugins.yml

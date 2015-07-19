@@ -1,0 +1,3 @@
+---
+jenkins_apt_key: https://jenkins-ci.org/debian/jenkins-ci.org.key
+jenkins_port: 8080

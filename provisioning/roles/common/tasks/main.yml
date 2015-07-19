@@ -1,0 +1,13 @@
+---
+- name: set timezone
+  template:
+    src=etc/timezone.j2
+    dest=/etc/timezone
+  notify:
+    - update tzdata
+
+- name: update ubuntu to last version
+  apt: upgrade=dist
+
+- name: install golang
+  apt: name=golang state=present
