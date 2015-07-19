@@ -49,3 +49,13 @@
     mode=0644
   notify:
     - restart jenkins
+
+- name: install ssh plugin
+  get_url:
+    url=https://updates.jenkins-ci.org/latest/ssh.hpi
+    dest=/var/lib/jenkins/plugins/ssh.hpi
+    owner=jenkins
+    group=jenkins
+    mode=0644
+  notify:
+    - restart jenkins

@@ -11,3 +11,9 @@
 
 - name: install golang
   apt: name=golang state=present
+
+- name: install git
+  apt: name=git state=present
+
+- name: install mercurial
+  apt: name=mercurial state=present
