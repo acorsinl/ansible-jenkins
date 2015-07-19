@@ -1,61 +1,18 @@
 ---
 
-- name: install golang plugin
+- name: install jenkins plugins
   get_url:
-    url=https://updates.jenkins-ci.org/latest/golang.hpi
-    dest=/var/lib/jenkins/plugins/golang.hpi
+    url=https://updates.jenkins-ci.org/latest/{{item}}.hpi
+    dest=/var/lib/jenkins/plugins/{{item}}.hpi
     owner=jenkins
     group=jenkins
     mode=0644
-  notify:
-    - restart jenkins
-
-- name: install bitbucket plugin
-  get_url:
-    url=https://updates.jenkins-ci.org/latest/bitbucket.hpi
-    dest=/var/lib/jenkins/plugins/bitbucket.hpi
-    owner=jenkins
-    group=jenkins
-    mode=0644
-  notify:
-    - restart jenkins
-
-- name: install git-client plugin
-  get_url:
-    url=https://updates.jenkins-ci.org/latest/git-client.hpi
-    dest=/var/lib/jenkins/plugins/git-client.hpi
-    owner=jenkins
-    group=jenkins
-    mode=0644
-  notify:
-    - restart jenkins
-
-- name: install github plugin
-  get_url:
-    url=https://updates.jenkins-ci.org/latest/github.hpi
-    dest=/var/lib/jenkins/plugins/github.hpi
-    owner=jenkins
-    group=jenkins
-    mode=0644
-  notify:
-    - restart jenkins
-
-- name: install debian package builder plugin
-  get_url:
-    url=https://updates.jenkins-ci.org/latest/debian-package-builder.hpi
-    dest=/var/lib/jenkins/plugins/debian-package-builder.hpi
-    owner=jenkins
-    group=jenkins
-    mode=0644
-  notify:
-    - restart jenkins
-
-- name: install ssh plugin
-  get_url:
-    url=https://updates.jenkins-ci.org/latest/ssh.hpi
-    dest=/var/lib/jenkins/plugins/ssh.hpi
-    owner=jenkins
-    group=jenkins
-    mode=0644
+  with_items:
+    - golang
+    - bitbucket
+    - git-client
+    - github
+    - debian-package-builder
+    - ssh
   notify:
     - restart jenkins

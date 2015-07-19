@@ -10,8 +10,9 @@
 
 - name: install jenkins
   apt: name=jenkins update_cache=yes state=present
-  notify:
-    - restart jenkins
+
+- name: start jenkins
+  service: name=jenkins state=started
 
 - name: deploy jenkins default config
   template:
