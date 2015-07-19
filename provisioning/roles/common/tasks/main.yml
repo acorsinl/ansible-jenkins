@@ -9,11 +9,9 @@
 - name: update ubuntu to last version
   apt: upgrade=dist
 
-- name: install golang
-  apt: name=golang state=present
-
-- name: install git
-  apt: name=git state=present
-
-- name: install mercurial
-  apt: name=mercurial state=present
+- name: install dependencies
+  apt: name={{item}} state=present
+  with_items:
+    - golang
+    - git
+    - mercurial
