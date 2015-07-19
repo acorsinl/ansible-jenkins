@@ -15,3 +15,10 @@
     - golang
     - git
     - mercurial
+
+- name: copy user's keyfile
+  authorized_key:
+    user=vagrant
+    key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    path='/home/vagrant/.ssh/authorized_keys'
+    manage_dir=no

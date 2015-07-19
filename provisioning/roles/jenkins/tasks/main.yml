@@ -10,6 +10,8 @@
 
 - name: install jenkins
   apt: name=jenkins update_cache=yes state=present
+  notify:
+    - restart jenkins
 
 - name: deploy jenkins default config
   template:
